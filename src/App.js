@@ -1,25 +1,27 @@
-import './App.css';
+import './index.css';
 import Employee from './components/employee';
 import { useState } from 'react';
+import {v4 as uuidv4 } from 'uuid';
+import Addemployee from './components/Addemployee';
+import Editemployee from './components/Editemployee';
+import Header from './components/Header';
+import Employees from './pages/Employees';
+import {BrowserRouter , Routes , Route} from 'react-router-dom';
+import Customers from './pages/Coustomers';
+ 
 function App() {
-  let [role , setRole] = useState('Intren');
-  let showEmployees = true;
+  
   return (
-    <div className="App">
-      {showEmployees ? 
-      <>
-      <input type='text'onChange={ (e) => {
-        setRole(e.target.value);
-      }}/>
-        <Employee name="Jack" role={role}/>
-        <Employee name="MyaMya" />
-        <Employee/>
-      </>
-         
-       
-       : <h2>Hello</h2>}
-       
-    </div>
+  <BrowserRouter>
+    <Header>
+      
+          <Routes>
+            <Route path='/employee' element={<Employees/>}/>
+            <Route path='/coustomer' element={<Customers/>}/>
+          </Routes>
+      
+    </Header>
+   </BrowserRouter>
   );
 }
 
